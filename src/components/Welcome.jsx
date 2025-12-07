@@ -47,20 +47,35 @@ const setUpTextHover = (container, type) => {
         });
     }
 
+    const handleMouseLeave = (e) => {
+        letters.forEach((letter) => animateLetter(letter, base, 0.3))
+    }
+
     container.addEventListener('mousemove', handleMouseMove);
+    container.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+        container.removeEventListener('mousemove', handleMouseMove);
+        container.removeEventListener('mouseleave', handleMouseLeave);
+    }
 }
 
 const Welcome = () => {
     const titleRef = useRef(null)
-    const subTitleRef = useRef(null)
+    const subtitleRef = useRef(null)
 
     useGSAP(() => {
-        setUpTextHover(titleRef.current, 'title')
-        setUpTextHover(subTitleRef.current, 'subtitle')
-    }, [])
+        const titleCleanup = setUpTextHover(titleRef.current, 'title')
+        const subtitleCleanup = setUpTextHover(subtitleRef.current, 'subtitle')
+
+        return () => {
+            titleCleanup();
+            subtitleCleanup();
+        }
+    }, []); 
 
   return <section id='welcome'>
-    <p ref={subTitleRef}>
+    <p ref={subtitleRef}>
         {renderText(
             "Hey, I'm Codetheif! Welcome to my", 
             "text-3xl font-georama", 
