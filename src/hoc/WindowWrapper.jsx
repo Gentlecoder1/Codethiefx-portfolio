@@ -1,14 +1,20 @@
 import useWindowStore from '#store/window'
 
 import { motion } from 'framer-motion'
-import gsap from 'gsap';
+// import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { useLayoutEffect, useRef } from 'react'
 
 const WindowWrapper = (Component, windowKey) => {
     const Wrapped = (props) => {
         const { focusWindow, windows } = useWindowStore();
-        const { isOpen, zIndex } = windows[windowKey];
+        const win = windows[windowKey];
+        if (!win) {
+            console.error(`WindowWrapper: Invalid windowKey "${windowKey}"`);
+            return null;
+        }
+        const { isOpen, zIndex } = win;
+        
         const ref = useRef(null)
 
         useGSAP(() => {
@@ -36,7 +42,7 @@ const WindowWrapper = (Component, windowKey) => {
                 animate={{ scale: isOpen ? 1 : 0, opacity: isOpen ? 1 : 0, y: isOpen ? 0 : 40 }}
                 transition={{ duration: 0.2, ease: 'easeOut' }}
                 drag
-                onClick={() => focusWindow(windowKey)}
+                onMouseDown={() => focusWindow(windowKey)}
                 id={windowKey} ref={ref} 
                 style={{ zIndex }} 
                 className='absolute'
@@ -49,12 +55,6 @@ const WindowWrapper = (Component, windowKey) => {
     Wrapped.displayName = `windowWrapper(${Component.displayName || Component.name || 'Component'})`
 
     return Wrapped
-
-//   return (
-//     <div>
-
-//     </div>
-//   )
 }
 
 export default WindowWrapper
