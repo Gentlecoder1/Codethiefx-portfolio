@@ -1,11 +1,11 @@
 import { Search } from "lucide-react"
-// import clsx from "clsx"
+import clsx from "clsx"
 
 import { WindowControls } from "#components"
 import WindowWrapper from "#hoc/WindowWrapper"
+import useWindowStore from "#store/window"
 import { locations } from "#constants"
 import useLocationStore from "#store/location"
-import useWindowStore from "#store/window"
 
 const Finder = () => {
     const { openWindow } = useWindowStore();
@@ -28,9 +28,9 @@ const Finder = () => {
                     <li 
                         key={item.id} 
                         onClick={() => setActiveLocation(item)}
-                        // className={clsx(
-                        //     item.id === activeLocation.id ? "active" : "not-active",
-                        // )}
+                        className={clsx(
+                            item.id === activeLocation.id ? "active" : "not-active",
+                        )}
                     >
                         <img 
                             src={item.icon}        
