@@ -45,7 +45,7 @@ const WindowWrapper = (Component, windowKey) => {
                 onMouseDown={() => focusWindow(windowKey)}
                 id={windowKey} ref={ref} 
                 style={{ zIndex }} 
-                className='absolute'
+                className='absolute top-16 left-20 max-w-[90vw] max-h-[85vh]'
             >
                 <Component {...props} />
             </motion.section>
