@@ -25,7 +25,7 @@ const Contact = () => {
                         <a 
                             href={link} 
                             target='_blank' 
-                            rel='noreferrer nooppener' 
+                            rel='noreferrer noopener' 
                             title={text}
                         >
                             <img src={icon} alt={text} className='size-5' />
