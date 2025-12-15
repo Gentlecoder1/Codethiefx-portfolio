@@ -8,7 +8,7 @@ import useWindowStore from '#store/window';
 
 const Dock = () => {
 
-  const { openWindow, closeWindow, windows } = useWindowStore(); 
+  const { openWindow, closeWindow, restoreWindow, windows } = useWindowStore(); 
   const dockRef = useRef(null)
 
   const toggleApp = (app) => {
@@ -19,7 +19,11 @@ const Dock = () => {
     if (!win) return;
     
     if (win.isOpen) {
-        closeWindow(app.id);
+        if (win.isMinimized) {
+            restoreWindow(app.id);
+        } else {
+            closeWindow(app.id);
+        }
     } else {
         openWindow(app.id);
     }
