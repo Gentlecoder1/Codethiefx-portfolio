@@ -361,6 +361,10 @@ body {
   #txtfile {
     @apply w-md absolute top-36 right-32 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
+    &.\!w-screen {
+      right: auto;
+    }
+
     h2 {
       @apply font-bold text-sm text-center w-full;
     }
