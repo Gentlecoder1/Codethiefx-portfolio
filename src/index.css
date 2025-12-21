@@ -163,39 +163,43 @@ body {
   }
 
   #terminal {
-    @apply w-xl absolute top-32 left-1/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-xl absolute top-32 left-1/12 bg-[#1e1e1e] shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+
+    #window-header {
+      @apply bg-[#2d2d2d] border-b border-[#3d3d3d] text-gray-300;
+    }
 
     h2 {
-      @apply font-bold text-sm text-center w-full;
+      @apply font-bold text-sm text-center w-full text-gray-300;
     }
 
     .techstack {
-      @apply text-sm font-roboto p-5;
+      @apply text-sm font-roboto p-5 text-gray-100;
 
       .label {
-        @apply flex items-center ms-10 mt-7;
+        @apply flex items-center ms-10 mt-7 text-gray-400;
       }
 
       .content {
-        @apply py-5 my-5 border-y border-dashed space-y-1;
+        @apply py-5 my-5 border-y border-dashed border-gray-600 space-y-1;
 
         li {
           .check {
-            @apply text-[#00A154] w-5;
+            @apply text-[#4EC9B0] w-5;
           }
 
           h3 {
-            @apply font-semibold text-[#00A154] w-32 ms-5;
+            @apply font-semibold text-[#4EC9B0] w-32 ms-5;
           }
 
           ul {
-            @apply flex items-center gap-3;
+            @apply flex items-center gap-3 text-gray-300;
           }
         }
       }
 
       .footnote {
-        @apply text-[#00A154] space-y-1;
+        @apply text-[#4EC9B0] space-y-1;
 
         p {
           @apply flex items-center;
