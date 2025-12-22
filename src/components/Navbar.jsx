@@ -24,13 +24,13 @@ const Navbar = () => {
         </div>
 
         <div>
-            <ul>
+            {/* <ul>
                 {navIcons.map(({ id, img }) => (
                     <li key={id}>
                         <img src={img} className='icon-hover' alt={`icon-${id}`} />
                     </li>
                 ))}
-            </ul>
+            </ul> */}
 
             <time>{dayjs().format("ddd MMM D h:mm A")}</time>
         </div>
