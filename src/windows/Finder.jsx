@@ -53,7 +53,7 @@ const Finder = ({ isMaximized }) => {
             <Search className="icon" />
         </div>
 
-        <div className={`bg-white flex ${isMaximized ? 'flex-1 h-0' : 'h-full'}`}>
+        <div className={`bg-white dark:bg-[#1e1e1e] flex ${isMaximized ? 'flex-1 h-0' : 'h-full'}`}>
             <div className={`sidebar ${isMaximized ? 'h-full' : ''}`}>
                 {renderList('Favorites', Object.values(locations))}
                 {renderList('Projects', locations.work?.children)}

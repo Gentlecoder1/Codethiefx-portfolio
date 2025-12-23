@@ -5,7 +5,7 @@ import { socials } from '#constants'
 
 const Contact = ({ isMaximized }) => {
   return (
-    <div className={isMaximized ? 'h-full w-full flex flex-col' : 'w-3xl max-h-[70vh] flex flex-col'}>
+    <div className={isMaximized ? 'h-full w-full flex flex-col' : 'w-[70vw] max-h-[70vh] flex flex-col'}>
         <div id='window-header'>    
             <WindowControls target="contact" />
             <h2>Contact Me</h2>

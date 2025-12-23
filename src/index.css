@@ -2,6 +2,9 @@
 
 @import "tailwindcss";
 
+/* Enable dark: variant to work with .dark class on any parent element */
+@custom-variant dark (&:where(.dark, .dark *));
+
 html,
 body {
   width: 100dvw;

@@ -59,12 +59,16 @@ const WindowWrapper = (Component, windowKey) => {
         // Determine animation state
         const getAnimateState = () => {
             if (!isOpen) {
-                return { scale: 0, opacity: 0, y: 40 };
+                return { scale: 0, opacity: 0, y: 40, x: 0 };
             }
             if (isMinimized) {
-                return { scale: 0, opacity: 0, y: 100 };
+                return { scale: 0, opacity: 0, y: 100, x: 0 };
             }
-            return { scale: 1, opacity: 1, y: 0 };
+            // Reset position to 0,0 when maximized to prevent overflow
+            if (effectiveMaximized) {
+                return { scale: 1, opacity: 1, y: 0, x: 0 };
+            }
+            return { scale: 1, opacity: 1 };
         };
 
         return (
@@ -73,14 +77,14 @@ const WindowWrapper = (Component, windowKey) => {
                 animate={getAnimateState()}
                 transition={{ duration: 0.2, ease: 'easeOut' }}
                 drag={!effectiveMaximized}
-                dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+                // dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
                 onMouseDown={() => focusWindow(windowKey)}
                 id={windowKey} ref={ref} 
                 style={{ zIndex }} 
                 className={`absolute ${isDarkMode ? 'dark' : ''} ${
                     effectiveMaximized 
                         ? 'top-0 left-0 !w-screen !h-screen !max-w-none !max-h-none overflow-hidden' 
-                        : 'top-16 left-20 max-w-[90vw] max-h-[85vh] overflow-hidden'
+                        : 'top-10 left-20 max-w-fit max-h-[80vh] overflow-hidden'
                 }`}
             >
                 <Component {...props} isMaximized={effectiveMaximized} isMobile={isMobile} />

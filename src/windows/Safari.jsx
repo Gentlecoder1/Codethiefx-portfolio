@@ -4,7 +4,7 @@ import { blogPosts } from '#constants'
 
 import { PanelLeft, ChevronLeft, ChevronRight, ShieldHalf, Search, Share, Plus, Copy, MoveRight } from 'lucide-react'
 
-const Safari = () => {
+const Safari = ({ isMaximized, isMobile }) => {
   return (
     <div className='mx-auto'>
         <div id='window-header'>
@@ -34,7 +34,7 @@ const Safari = () => {
             </div>
         </div>
 
-        <div className='max-h-[600px] overflow-y-auto'>
+        <div className={`overflow-y-auto ${!isMaximized ? 'max-h-[65vh]' : 'max-h-[90vh]'}`}>
             <div className='blog'>
                 <h2>My Blog</h2>
 
