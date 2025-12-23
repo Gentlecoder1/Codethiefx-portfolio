@@ -7,8 +7,8 @@ const WindowControls = ({ target }) => {
   return (
     <div id='window-controls'>
         <div className='close' onClick={() => closeWindow(target)} />
-        <div className='minimize' onClick={() => minimizeWindow(target)} />
-        <div className='maximize' onClick={() => toggleMaximize(target)} />
+        <div className='minimize hidden sm:block' onClick={() => minimizeWindow(target)} />
+        <div className='maximize hidden sm:block' onClick={() => toggleMaximize(target)} />
     </div>
   )
 }

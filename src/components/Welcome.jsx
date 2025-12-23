@@ -78,20 +78,16 @@ const Welcome = () => {
     <p ref={subtitleRef}>
         {renderText(
             "Hey, I'm Codetheif! Welcome to my", 
-            "text-3xl font-georama", 
+            "text-lg sm:text-2xl md:text-3xl font-georama", 
             200
         )}
     </p>
-    <h1 ref={titleRef} className='mt-7'>
+    <h1 ref={titleRef} className='mt-4 sm:mt-7'>
         {renderText(
             "Portfolio",
-            "text-9xl font-georama"
+            "text-5xl sm:text-7xl md:text-9xl font-georama"
         )}
     </h1>
-
-    <div className='small-screen'>
-        <p>This portfolio is designed for desktop/tablet screens only.</p>
-    </div>
   </section>
 }
 
