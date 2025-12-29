@@ -24,6 +24,7 @@ const Home = () => {
         <ul>
             {projects.map((project) => (
                 <motion.li 
+                    whileTap={{ scale: 0.94 }}
                     drag
                     key={project.id} 
                     className={clsx("group folder")}

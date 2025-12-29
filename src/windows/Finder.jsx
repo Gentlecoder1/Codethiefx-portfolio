@@ -1,4 +1,4 @@
-import { Search } from "lucide-react"
+import { Search, ArrowRightIcon, ArrowLeftIcon } from "lucide-react"
 import clsx from "clsx"
 
 import { WindowControls } from "#components"
@@ -6,10 +6,12 @@ import WindowWrapper from "#hoc/WindowWrapper"
 import useWindowStore from "#store/window"
 import { locations } from "#constants"
 import useLocationStore from "#store/location"
+import React, { useState } from "react"
 
-const Finder = ({ isMaximized }) => {
+const Finder = ({ isMaximized, isMobile }) => {
     const { openWindow } = useWindowStore();
     const { activeLocation, setActiveLocation } = useLocationStore();
+    const [openSidebar, setOpenSidebar] = useState(false);
 
     const openItem = (item) => {
         if(item.fileType === "pdf") return openWindow("resume");
@@ -54,7 +56,20 @@ const Finder = ({ isMaximized }) => {
         </div>
 
         <div className={`bg-white dark:bg-[#1e1e1e] flex ${isMaximized ? 'flex-1 h-0' : 'h-full'}`}>
-            <div className={`sidebar ${isMaximized ? 'h-full' : ''}`}>
+            <div
+                className={`sidebar ${openSidebar ? 'w-full sm:w-48' : 'w-20 sm:w-48'}  ${isMaximized ? 'h-full' : ''}`}
+            >
+                <div 
+                    className="sm:hidden flex w-fit ml-auto cursor-pointer"
+                >
+                    {!openSidebar ? 
+                        <ArrowRightIcon onClick={() => setOpenSidebar(true)} /> 
+                        : 
+                        <ArrowLeftIcon onClick={() => setOpenSidebar(false)} /> 
+                    }
+                    
+                </div>
+
                 {renderList('Favorites', Object.values(locations))}
                 {renderList('Projects', locations.work?.children)}
             </div>

@@ -10,6 +10,8 @@ const Navbar = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
+
+  // check whether screen size is mobile
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 640);
     checkMobile();
@@ -39,7 +41,7 @@ const Navbar = () => {
 
   return (
     <nav 
-      className={!isMobile ? (isVisible ? 'nav-visible' : 'nav-hidden') : ''}
+      className={`relative  ${!isMobile ? (isVisible ? 'nav-visible' : 'nav-hidden') : 'fixed w-full'}`}
       onMouseLeave={handleMouseLeave}
     >
         <div>

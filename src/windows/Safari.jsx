@@ -10,7 +10,7 @@ const Safari = ({ isMaximized, isMobile }) => {
         <div id='window-header'>
             <WindowControls target="safari" />
 
-            <PanelLeft className='ml-10 icon' />
+            <PanelLeft className='ml-10 icon hidden sm-flex' />
 
             <div className='flex items-center gap-1 ml-5'>
                 <ChevronLeft className='icon' />
@@ -18,16 +18,16 @@ const Safari = ({ isMaximized, isMobile }) => {
             </div>
             
             <div className='flex-1 flex-center gap-3'>
-                <ShieldHalf className='icon' />
+                <ShieldHalf className='icon hidden sm-flex' />
                 
                 <div className='search'>
                     <Search className='icon' />
 
-                    <input type="text" placeholder='Search or enter website name' className='flex-1' />
+                    <input type="text" placeholder='Search or enter website name' className='flex-1 w-[100%]' />
                 </div>
             </div>
             
-            <div className='flex items-center gap-5'>
+            <div className='items-center gap-5 hidden sm-flex'>
                 <Share className='icon' />
                 <Plus className='icon' />
                 <Copy className='icon' />
