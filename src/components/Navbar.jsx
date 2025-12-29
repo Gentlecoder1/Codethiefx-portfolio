@@ -41,7 +41,7 @@ const Navbar = () => {
 
   return (
     <nav 
-      className={`relative  ${!isMobile ? (isVisible ? 'nav-visible' : 'nav-hidden') : 'fixed w-full'}`}
+      className={`relative z-9999  ${!isMobile ? (isVisible ? 'nav-visible' : 'nav-hidden') : 'fixed w-full'}`}
       onMouseLeave={handleMouseLeave}
     >
         <div>
